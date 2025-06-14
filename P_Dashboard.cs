@@ -17,6 +17,8 @@ namespace Administrador
         public P_Dashboard()
         {
             InitializeComponent();
+            dtpFechaInicio.ValueChanged += dtpFechaInicio_ValueChanged;
+            dtpFechaFin.ValueChanged += dtpFechaFin_ValueChanged;
         }
 
         private void P_Dashboard_Load(object sender, EventArgs e)
@@ -59,6 +61,14 @@ namespace Administrador
                                 decimal montoAhorrable = reader.GetDecimal(reader.GetOrdinal("MontoAhorrable"));
                                 decimal montoUtilizable = reader.GetDecimal(reader.GetOrdinal("MontoUtilizable"));
 
+                                if (totalIngresos == 0 && totalGastos == 0 && balance == 0 && montoAhorrable == 0 && montoUtilizable == 0)
+                                {
+                                    chartBalance.Series.Clear();
+                                    chartIngresos.Series.Clear();
+                                    MessageBox.Show("No hay datos para el rango seleccionado.");
+                                    return;
+                                }
+
                                 chartBalance.Series.Clear();
                                 Series serieBalance = new Series
                                 {
@@ -85,6 +95,7 @@ namespace Administrador
                                 serieIngresos.Points[0].Color = Color.MediumSeaGreen;
                                 serieIngresos.Points[1].Color = Color.Crimson;
                                 chartIngresos.Series.Add(serieIngresos);
+
                             }
                             else
                             {
