@@ -36,7 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkRecordarInicio = new System.Windows.Forms.CheckBox();
             this.panelTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,23 +121,24 @@
             this.label4.Text = "Si no tienes una cuenta, crea una aqui.";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // checkBox1
+            // chkRecordarInicio
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(99, 260);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(157, 19);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Recordar inicio de sesión";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkRecordarInicio.AutoSize = true;
+            this.chkRecordarInicio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRecordarInicio.Location = new System.Drawing.Point(99, 260);
+            this.chkRecordarInicio.Name = "chkRecordarInicio";
+            this.chkRecordarInicio.Size = new System.Drawing.Size(157, 19);
+            this.chkRecordarInicio.TabIndex = 7;
+            this.chkRecordarInicio.Text = "Recordar inicio de sesión";
+            this.chkRecordarInicio.UseVisualStyleBackColor = true;
+            this.chkRecordarInicio.CheckedChanged += new System.EventHandler(this.chkRecordarInicio_CheckedChanged);
             // 
             // P_InicarSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 408);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkRecordarInicio);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtContrasena);
@@ -147,6 +148,7 @@
             this.Controls.Add(this.panelTitulo);
             this.Name = "P_InicarSesion";
             this.Text = "P_InicarSesion";
+            this.Load += new System.EventHandler(this.P_InicarSesion_Load);
             this.panelTitulo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -163,6 +165,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtContrasena;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkRecordarInicio;
     }
 }

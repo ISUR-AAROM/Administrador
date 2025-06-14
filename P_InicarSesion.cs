@@ -46,9 +46,27 @@ namespace Administrador
                                 UsuarioSesion.Id = Convert.ToInt32(reader["id"]);
                                 UsuarioSesion.Nombre = reader["nombre"].ToString();
 
+                                // Guardar sesión solo si el checkbox está marcado
+                                if (chkRecordarInicio.Checked)
+                                {
+                                    Properties.Settings.Default.UsuarioId = UsuarioSesion.Id;
+                                    Properties.Settings.Default.RecordarHasta = DateTime.Now.AddMinutes(10);
+                                    Properties.Settings.Default.Save();
+                                }
+                                else
+                                {
+                                    Properties.Settings.Default.UsuarioId = 0;
+                                    Properties.Settings.Default.RecordarHasta = DateTime.MinValue;
+                                    Properties.Settings.Default.Save();
+                                }
+
                                 MessageBox.Show("¡Bienvenido " + UsuarioSesion.Nombre + "!");
-                                new P_Principal().Show();
                                 this.Hide();
+                                using (var principal = new P_Principal())
+                                {
+                                    principal.ShowDialog();
+                                }
+                                this.Close();
                             }
                             else
                             {
@@ -75,6 +93,42 @@ namespace Administrador
                     builder.Append(b.ToString("x2"));
                 }
                 return builder.ToString();
+            }
+        }
+
+        private void chkRecordarInicio_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void P_InicarSesion_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.UsuarioId > 0 && Properties.Settings.Default.RecordarHasta > DateTime.Now)
+            {
+                UsuarioSesion.Id = Properties.Settings.Default.UsuarioId;
+
+                // Recuperar el nombre del usuario desde la base de datos
+                string conexion = "Data Source=.;Initial Catalog=GestionFinanciera;Integrated Security=True;";
+                using (SqlConnection conexionBD = new SqlConnection(conexion))
+                {
+                    conexionBD.Open();
+                    string query = "SELECT nombre FROM Usuario WHERE id = @id";
+                    using (SqlCommand cmd = new SqlCommand(query, conexionBD))
+                    {
+                        cmd.Parameters.AddWithValue("@id", UsuarioSesion.Id);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                            UsuarioSesion.Nombre = result.ToString();
+                        else
+                            UsuarioSesion.Nombre = "";
+                    }
+                }
+
+                this.Hide();
+                using (var principal = new P_Principal())
+                {
+                    principal.ShowDialog();
+                }
+                this.Close();
             }
         }
     }

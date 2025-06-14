@@ -121,5 +121,21 @@ namespace Administrador
                 }
             }
         }
+
+        private void btnMCategorias_Click(object sender, EventArgs e)
+        {
+            Form principal = this.MdiParent ?? this.Owner;
+            if (principal == null)
+                principal = Application.OpenForms.OfType<P_Principal>().FirstOrDefault();
+
+            if (principal is P_Principal pPrincipal)
+            {
+                pPrincipal.AbrirFormularioEnPanel(new P_Categorias());
+            }
+            else
+            {
+                MessageBox.Show("No se pudo encontrar el formulario principal.");
+            }
+        }
     }
 }

@@ -65,6 +65,7 @@
             this.btnMCategorias.TabIndex = 19;
             this.btnMCategorias.Text = "Modificar categorías";
             this.btnMCategorias.UseVisualStyleBackColor = false;
+            this.btnMCategorias.Click += new System.EventHandler(this.btnMCategorias_Click);
             // 
             // txtNombre
             // 

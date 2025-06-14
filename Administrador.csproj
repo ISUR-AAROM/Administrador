@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PDFsharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharpNetStandard2.1.51.4845\lib\netstandard2.0\PDFsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,17 +53,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="P_Categorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Categorias.Designer.cs">
+      <DependentUpon>P_Categorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P_Dashboard.Designer.cs">
       <DependentUpon>P_Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_EditarMeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_EditarMeta.Designer.cs">
+      <DependentUpon>P_EditarMeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_GenerarReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_GenerarReporte.Designer.cs">
+      <DependentUpon>P_GenerarReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_InicarSesion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P_InicarSesion.Designer.cs">
       <DependentUpon>P_InicarSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_MetaFinanciera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_MetaFinanciera.Designer.cs">
+      <DependentUpon>P_MetaFinanciera.cs</DependentUpon>
     </Compile>
     <Compile Include="P_Principal.cs">
       <SubType>Form</SubType>
@@ -85,12 +115,30 @@
     <Compile Include="P_Registro.Designer.cs">
       <DependentUpon>P_Registro.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_Transacciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Transacciones.Designer.cs">
+      <DependentUpon>P_Transacciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioSesion.cs" />
+    <EmbeddedResource Include="P_Categorias.resx">
+      <DependentUpon>P_Categorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_Dashboard.resx">
       <DependentUpon>P_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_EditarMeta.resx">
+      <DependentUpon>P_EditarMeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_GenerarReporte.resx">
+      <DependentUpon>P_GenerarReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_InicarSesion.resx">
       <DependentUpon>P_InicarSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_MetaFinanciera.resx">
+      <DependentUpon>P_MetaFinanciera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_Principal.resx">
       <DependentUpon>P_Principal.cs</DependentUpon>
@@ -113,6 +161,10 @@
     <EmbeddedResource Include="P_Registro.resx">
       <DependentUpon>P_Registro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_Transacciones.resx">
+      <DependentUpon>P_Transacciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

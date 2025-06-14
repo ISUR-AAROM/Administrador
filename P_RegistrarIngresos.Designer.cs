@@ -81,6 +81,7 @@
             this.btnMCategorias.TabIndex = 4;
             this.btnMCategorias.Text = "Modificar categorías";
             this.btnMCategorias.UseVisualStyleBackColor = false;
+            this.btnMCategorias.Click += new System.EventHandler(this.btnMCategorias_Click);
             // 
             // btnGuardar
             // 

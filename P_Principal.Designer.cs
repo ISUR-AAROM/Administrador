@@ -57,6 +57,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnTransacciones);
             this.flowLayoutPanel1.Controls.Add(this.btnMeta);
             this.flowLayoutPanel1.Controls.Add(this.btnReporte);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -65,26 +66,29 @@
             // 
             // panelUsuario
             // 
-            this.panelUsuario.Controls.Add(this.button1);
+            this.panelUsuario.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panelUsuario.Controls.Add(this.label1);
             this.panelUsuario.Controls.Add(this.lblNombre);
             this.panelUsuario.Location = new System.Drawing.Point(3, 3);
             this.panelUsuario.Name = "panelUsuario";
-            this.panelUsuario.Size = new System.Drawing.Size(197, 97);
+            this.panelUsuario.Size = new System.Drawing.Size(197, 60);
             this.panelUsuario.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.button1.BackColor = System.Drawing.Color.DarkRed;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Desktop;
+            this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 58);
+            this.button1.Location = new System.Drawing.Point(3, 405);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 36);
+            this.button1.Size = new System.Drawing.Size(200, 45);
             this.button1.TabIndex = 2;
             this.button1.Text = "Cerrar sesión";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
@@ -115,7 +119,7 @@
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDashboard.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.White;
-            this.btnDashboard.Location = new System.Drawing.Point(3, 106);
+            this.btnDashboard.Location = new System.Drawing.Point(3, 69);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(197, 50);
             this.btnDashboard.TabIndex = 0;
@@ -129,7 +133,7 @@
             this.btnRIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRIngreso.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRIngreso.ForeColor = System.Drawing.Color.White;
-            this.btnRIngreso.Location = new System.Drawing.Point(3, 162);
+            this.btnRIngreso.Location = new System.Drawing.Point(3, 125);
             this.btnRIngreso.Name = "btnRIngreso";
             this.btnRIngreso.Size = new System.Drawing.Size(197, 50);
             this.btnRIngreso.TabIndex = 2;
@@ -143,7 +147,7 @@
             this.btnRGasto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRGasto.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRGasto.ForeColor = System.Drawing.Color.White;
-            this.btnRGasto.Location = new System.Drawing.Point(3, 218);
+            this.btnRGasto.Location = new System.Drawing.Point(3, 181);
             this.btnRGasto.Name = "btnRGasto";
             this.btnRGasto.Size = new System.Drawing.Size(197, 50);
             this.btnRGasto.TabIndex = 3;
@@ -157,12 +161,13 @@
             this.btnTransacciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTransacciones.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTransacciones.ForeColor = System.Drawing.Color.White;
-            this.btnTransacciones.Location = new System.Drawing.Point(3, 274);
+            this.btnTransacciones.Location = new System.Drawing.Point(3, 237);
             this.btnTransacciones.Name = "btnTransacciones";
             this.btnTransacciones.Size = new System.Drawing.Size(197, 50);
             this.btnTransacciones.TabIndex = 4;
             this.btnTransacciones.Text = "Ver transacciones";
             this.btnTransacciones.UseVisualStyleBackColor = true;
+            this.btnTransacciones.Click += new System.EventHandler(this.btnTransacciones_Click);
             // 
             // btnMeta
             // 
@@ -170,12 +175,13 @@
             this.btnMeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMeta.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMeta.ForeColor = System.Drawing.Color.White;
-            this.btnMeta.Location = new System.Drawing.Point(3, 330);
+            this.btnMeta.Location = new System.Drawing.Point(3, 293);
             this.btnMeta.Name = "btnMeta";
             this.btnMeta.Size = new System.Drawing.Size(197, 50);
             this.btnMeta.TabIndex = 5;
             this.btnMeta.Text = "Meta financiera";
             this.btnMeta.UseVisualStyleBackColor = true;
+            this.btnMeta.Click += new System.EventHandler(this.btnMeta_Click);
             // 
             // btnReporte
             // 
@@ -183,12 +189,13 @@
             this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReporte.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReporte.ForeColor = System.Drawing.Color.White;
-            this.btnReporte.Location = new System.Drawing.Point(3, 386);
+            this.btnReporte.Location = new System.Drawing.Point(3, 349);
             this.btnReporte.Name = "btnReporte";
             this.btnReporte.Size = new System.Drawing.Size(197, 50);
             this.btnReporte.TabIndex = 6;
             this.btnReporte.Text = "Generar reporte PDF";
             this.btnReporte.UseVisualStyleBackColor = true;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
             // panelTitulo
             // 

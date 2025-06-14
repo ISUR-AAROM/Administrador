@@ -65,7 +65,6 @@ namespace Administrador
                                 {
                                     chartBalance.Series.Clear();
                                     chartIngresos.Series.Clear();
-                                    MessageBox.Show("No hay datos para el rango seleccionado.");
                                     return;
                                 }
 

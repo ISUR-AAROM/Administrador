@@ -63,5 +63,23 @@ namespace Administrador
         {
             Application.Exit();
         }
+
+        private void btnTransacciones_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new P_Transacciones());
+            lblTitulo.Text = "Transacciones";
+        }
+
+        private void btnMeta_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new P_MetaFinanciera());
+            lblTitulo.Text = "Meta Financiera";
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new P_GenerarReporte());
+            lblTitulo.Text = "Generar Reporte";
+        }
     }
 }
