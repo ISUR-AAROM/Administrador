@@ -80,7 +80,6 @@ namespace Administrador
                                 serieBalance.Points[0].Color = Color.MediumSeaGreen;
                                 serieBalance.Points[1].Color = Color.Goldenrod;
                                 serieBalance.Points[2].Color = Color.CornflowerBlue;
-
                                 chartBalance.Series.Add(serieBalance);
 
                                 chartIngresos.Series.Clear();
@@ -94,7 +93,6 @@ namespace Administrador
                                 serieIngresos.Points[0].Color = Color.MediumSeaGreen;
                                 serieIngresos.Points[1].Color = Color.Crimson;
                                 chartIngresos.Series.Add(serieIngresos);
-
                             }
                             else
                             {

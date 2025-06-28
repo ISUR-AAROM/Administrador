@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -46,7 +47,6 @@ namespace Administrador
                                 UsuarioSesion.Id = Convert.ToInt32(reader["id"]);
                                 UsuarioSesion.Nombre = reader["nombre"].ToString();
 
-                                // Guardar sesión solo si el checkbox está marcado
                                 if (chkRecordarInicio.Checked)
                                 {
                                     Properties.Settings.Default.UsuarioId = UsuarioSesion.Id;
@@ -84,14 +84,13 @@ namespace Administrador
         
         private string HashPassword(string password)
         {
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            using (SHA256 sha256 = SHA256.Create())
             {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hash = sha256.ComputeHash(bytes);
                 StringBuilder builder = new StringBuilder();
-                foreach (byte b in bytes)
-                {
+                foreach (byte b in hash)
                     builder.Append(b.ToString("x2"));
-                }
                 return builder.ToString();
             }
         }
@@ -106,7 +105,6 @@ namespace Administrador
             {
                 UsuarioSesion.Id = Properties.Settings.Default.UsuarioId;
 
-                // Recuperar el nombre del usuario desde la base de datos
                 string conexion = "Data Source=.;Initial Catalog=GestionFinanciera;Integrated Security=True;";
                 using (SqlConnection conexionBD = new SqlConnection(conexion))
                 {

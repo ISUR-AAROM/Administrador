@@ -91,10 +91,11 @@ namespace Administrador
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show(
-        "¿Está seguro que desea eliminar la meta financiera?",
-        "Confirmar eliminación",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Warning);
+                    "¿Está seguro que desea eliminar la meta financiera?",
+                    "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
             if (confirmResult != DialogResult.Yes)
                 return;

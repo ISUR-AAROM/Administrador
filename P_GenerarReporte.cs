@@ -104,8 +104,8 @@ namespace Administrador
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@usuarioId", UsuarioSesion.Id);
-                        cmd.Parameters.AddWithValue("@fechaInicio", DateTime.Now.AddMonths(-1).Date);
-                        cmd.Parameters.AddWithValue("@fechaFin", DateTime.Now.Date);
+                        cmd.Parameters.AddWithValue("@fechaInicio", dtpInicio.Value);
+                        cmd.Parameters.AddWithValue("@fechaFin", dtpFin.Value);
 
                         if (chkTodas.Checked)
                             cmd.Parameters.AddWithValue("@categoriaId", DBNull.Value);
