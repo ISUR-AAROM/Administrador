@@ -14,6 +14,8 @@ using System.Xml.Linq;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.Windows.Forms.DataVisualization.Charting;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Administrador
 {
@@ -46,11 +48,12 @@ namespace Administrador
             if (chkTodas.Checked)
             {
                 cmbCategorias.Enabled = false;
+                cmbCategorias.Text = string.Empty;
             }
             else
             {
                 cmbCategorias.Enabled = true;
-                cmbCategorias.Text = " ";
+                cmbCategorias.Text = string.Empty;
             }
         }
 
@@ -154,59 +157,60 @@ namespace Administrador
                 chartResumen.SaveImage(ms, ChartImageFormat.Png);
                 ms.Position = 0;
 
-                // 3. Crear el PDF con PDFsharp
-                PdfDocument document = new PdfDocument();
-                document.Info.Title = "Reporte Financiero";
-                PdfPage page = document.AddPage();
-                XGraphics gfx = XGraphics.FromPdfPage(page);
-                XFont font = new XFont("Verdana", 10, XFontStyle.Regular);
-                XFont fontBold = new XFont("Verdana", 12, XFontStyle.Bold);
-
-                double y = 40;
-
-                // Título y totales
-                gfx.DrawString("Reporte Financiero", fontBold, XBrushes.Black, new XRect(0, y, page.Width, 20), XStringFormats.TopCenter);
-                y += 30;
-                gfx.DrawString($"Usuario: {UsuarioSesion.Nombre}", font, XBrushes.Black, 40, y); y += 20;
-                gfx.DrawString($"Periodo: {fechaInicio.ToShortDateString()} - {fechaFin.ToShortDateString()}", font, XBrushes.Black, 40, y); y += 30;
-                gfx.DrawString($"Total Ingresos: {totalIngresos:C2}", font, XBrushes.Black, 40, y); y += 20;
-                gfx.DrawString($"Total Gastos: {totalGastos:C2}", font, XBrushes.Black, 40, y); y += 20;
-                gfx.DrawString($"Balance: {balance:C2}", font, XBrushes.Black, 40, y); y += 20;
-                gfx.DrawString($"Ahorro Total: {ahorroTotal:C2}", font, XBrushes.Black, 40, y); y += 30;
-
-                // 4. Insertar el gráfico de barras
-                XImage img = XImage.FromStream(ms);
-                gfx.DrawImage(img, 40, y, 400, 200);
-                y += 220;
-
-                // 5. Encabezado de tabla de transacciones
-                gfx.DrawString("Transacciones:", fontBold, XBrushes.Black, 40, y); y += 20;
-                gfx.DrawString("Tipo", fontBold, XBrushes.Black, 40, y);
-                gfx.DrawString("Nombre", fontBold, XBrushes.Black, 100, y);
-                gfx.DrawString("Categoría", fontBold, XBrushes.Black, 220, y);
-                gfx.DrawString("Monto", fontBold, XBrushes.Black, 340, y);
-                gfx.DrawString("Fecha", fontBold, XBrushes.Black, 420, y);
-                y += 20;
-
-                // 6. Detalle de transacciones
-                foreach (var t in transacciones)
+                using (FileStream fs = new FileStream(lblUbicacion.Text, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    gfx.DrawString(t.Item1, font, XBrushes.Black, 40, y);
-                    gfx.DrawString(t.Item2, font, XBrushes.Black, 100, y);
-                    gfx.DrawString(t.Item3, font, XBrushes.Black, 220, y);
-                    gfx.DrawString(t.Item4.ToString("C2"), font, XBrushes.Black, 340, y);
-                    gfx.DrawString(t.Item5.ToShortDateString(), font, XBrushes.Black, 420, y);
-                    y += 18;
-                    if (y > page.Height - 40)
+                    using (Document document = new Document(PageSize.A4, 40, 40, 40, 40))
                     {
-                        page = document.AddPage();
-                        gfx = XGraphics.FromPdfPage(page);
-                        y = 40;
+                        PdfWriter writer = PdfWriter.GetInstance(document, fs);
+                        document.Open();
+
+                        var fontTitle = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16);
+                        var fontBold = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
+                        var font = FontFactory.GetFont(FontFactory.HELVETICA, 10);
+
+                        document.Add(new Paragraph("Reporte Financiero", fontTitle) { Alignment = Element.ALIGN_CENTER });
+                        document.Add(new Paragraph($"Usuario: {UsuarioSesion.Nombre}", font));
+                        document.Add(new Paragraph($"Periodo: {fechaInicio.ToShortDateString()} - {fechaFin.ToShortDateString()}", font));
+                        document.Add(new Paragraph($"Total Ingresos: {totalIngresos:C2}", font));
+                        document.Add(new Paragraph($"Total Gastos: {totalGastos:C2}", font));
+                        document.Add(new Paragraph($"Balance: {balance:C2}", font));
+                        document.Add(new Paragraph($"Ahorro Total: {ahorroTotal:C2}", font));
+                        document.Add(new Paragraph(" "));
+
+                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(ms.ToArray());
+                        img.ScaleToFit(400f, 200f);
+                        img.Alignment = Element.ALIGN_CENTER;
+                        document.Add(img);
+
+                        document.Add(new Paragraph(" "));
+
+                        document.Add(new Paragraph("Transacciones:", fontBold));
+                        document.Add(new Paragraph(" "));
+                        PdfPTable table = new PdfPTable(5);
+                        table.WidthPercentage = 100;
+                        table.SetWidths(new float[] { 1.2f, 2f, 2f, 1.2f, 1.5f });
+
+                        table.AddCell(new PdfPCell(new Phrase("Tipo", fontBold)));
+                        table.AddCell(new PdfPCell(new Phrase("Nombre", fontBold)));
+                        table.AddCell(new PdfPCell(new Phrase("Categoría", fontBold)));
+                        table.AddCell(new PdfPCell(new Phrase("Monto", fontBold)));
+                        table.AddCell(new PdfPCell(new Phrase("Fecha", fontBold)));
+
+                        foreach (var t in transacciones)
+                        {
+                            table.AddCell(new PdfPCell(new Phrase(t.Item1, font)));
+                            table.AddCell(new PdfPCell(new Phrase(t.Item2, font)));
+                            table.AddCell(new PdfPCell(new Phrase(t.Item3, font)));
+                            table.AddCell(new PdfPCell(new Phrase(t.Item4.ToString("C2"), font)));
+                            table.AddCell(new PdfPCell(new Phrase(t.Item5.ToShortDateString(), font)));
+                        }
+
+                        document.Add(table);
+
+                        document.Close();
+                        writer.Close();
                     }
                 }
-
-                document.Save(lblUbicacion.Text);
-                document.Close();
                 ms.Dispose();
 
                 MessageBox.Show("Reporte PDF generado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
