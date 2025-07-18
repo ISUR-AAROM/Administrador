@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartBalance = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartIngresos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
@@ -46,13 +46,13 @@
             // 
             this.chartBalance.BackColor = System.Drawing.Color.Transparent;
             this.chartBalance.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea3.Name = "ChartArea1";
-            this.chartBalance.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chartBalance.ChartAreas.Add(chartArea1);
             this.chartBalance.Location = new System.Drawing.Point(47, 114);
             this.chartBalance.Name = "chartBalance";
-            series3.ChartArea = "ChartArea1";
-            series3.Name = "Series1";
-            this.chartBalance.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Name = "Series1";
+            this.chartBalance.Series.Add(series1);
             this.chartBalance.Size = new System.Drawing.Size(240, 163);
             this.chartBalance.TabIndex = 0;
             this.chartBalance.Text = "chart1";
@@ -61,13 +61,13 @@
             // 
             this.chartIngresos.BackColor = System.Drawing.Color.Transparent;
             this.chartIngresos.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea4.Name = "ChartArea1";
-            this.chartIngresos.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.chartIngresos.ChartAreas.Add(chartArea2);
             this.chartIngresos.Location = new System.Drawing.Point(293, 114);
             this.chartIngresos.Name = "chartIngresos";
-            series4.ChartArea = "ChartArea1";
-            series4.Name = "Series1";
-            this.chartIngresos.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Name = "Series1";
+            this.chartIngresos.Series.Add(series2);
             this.chartIngresos.Size = new System.Drawing.Size(240, 163);
             this.chartIngresos.TabIndex = 3;
             this.chartIngresos.Text = "chart3";
@@ -79,6 +79,7 @@
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(213, 23);
             this.dtpFechaInicio.TabIndex = 4;
+            this.dtpFechaInicio.Value = new System.DateTime(2025, 1, 1, 0, 0, 0, 0);
             // 
             // dtpFechaFin
             // 

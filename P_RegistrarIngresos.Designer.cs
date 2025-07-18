@@ -30,7 +30,6 @@
         {
             this.label8 = new System.Windows.Forms.Label();
             this.cmbTipoIngreso = new System.Windows.Forms.ComboBox();
-            this.btnMCategorias = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPorcentaje = new System.Windows.Forms.TextBox();
@@ -68,21 +67,6 @@
             this.cmbTipoIngreso.TabIndex = 13;
             this.cmbTipoIngreso.SelectedIndexChanged += new System.EventHandler(this.cmbTipoIngreso_SelectedIndexChanged);
             // 
-            // btnMCategorias
-            // 
-            this.btnMCategorias.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnMCategorias.FlatAppearance.BorderSize = 0;
-            this.btnMCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMCategorias.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMCategorias.ForeColor = System.Drawing.Color.White;
-            this.btnMCategorias.Location = new System.Drawing.Point(409, 252);
-            this.btnMCategorias.Name = "btnMCategorias";
-            this.btnMCategorias.Size = new System.Drawing.Size(140, 33);
-            this.btnMCategorias.TabIndex = 4;
-            this.btnMCategorias.Text = "Modificar categorías";
-            this.btnMCategorias.UseVisualStyleBackColor = false;
-            this.btnMCategorias.Click += new System.EventHandler(this.btnMCategorias_Click);
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -118,6 +102,8 @@
             this.txtPorcentaje.Name = "txtPorcentaje";
             this.txtPorcentaje.Size = new System.Drawing.Size(115, 20);
             this.txtPorcentaje.TabIndex = 10;
+            this.txtPorcentaje.TextChanged += new System.EventHandler(this.txtPorcentaje_TextChanged);
+            this.txtPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentaje_KeyPress);
             // 
             // label6
             // 
@@ -197,6 +183,8 @@
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(100, 20);
             this.txtMonto.TabIndex = 1;
+            this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // txtNombre
             // 
@@ -214,7 +202,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbTipoIngreso);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnMCategorias);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtMonto);
@@ -248,7 +235,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPorcentaje;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnMCategorias;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbTipoIngreso;
     }

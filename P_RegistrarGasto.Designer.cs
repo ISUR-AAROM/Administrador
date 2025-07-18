@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label4 = new System.Windows.Forms.Label();
-            this.btnMCategorias = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtMonto = new System.Windows.Forms.TextBox();
@@ -51,21 +50,6 @@
             this.label4.Size = new System.Drawing.Size(92, 15);
             this.label4.TabIndex = 22;
             this.label4.Text = "Fecha del gasto:";
-            // 
-            // btnMCategorias
-            // 
-            this.btnMCategorias.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnMCategorias.FlatAppearance.BorderSize = 0;
-            this.btnMCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMCategorias.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMCategorias.ForeColor = System.Drawing.Color.White;
-            this.btnMCategorias.Location = new System.Drawing.Point(409, 183);
-            this.btnMCategorias.Name = "btnMCategorias";
-            this.btnMCategorias.Size = new System.Drawing.Size(140, 33);
-            this.btnMCategorias.TabIndex = 19;
-            this.btnMCategorias.Text = "Modificar categorías";
-            this.btnMCategorias.UseVisualStyleBackColor = false;
-            this.btnMCategorias.Click += new System.EventHandler(this.btnMCategorias_Click);
             // 
             // txtNombre
             // 
@@ -97,6 +81,7 @@
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(100, 20);
             this.txtMonto.TabIndex = 16;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // cmbCategoria
             // 
@@ -164,7 +149,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 311);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnMCategorias);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtMonto);
@@ -184,7 +168,6 @@
 
         #endregion
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnMCategorias;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox txtMonto;

@@ -31,6 +31,13 @@ namespace Administrador
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row["Gasto/Ingreso"].ToString() == "Gasto")
+                        {
+                            row["Ahorrable/Utilizable"] = string.Empty;
+                        }
+                    }
                     dgvTransacciones.DataSource = dt;
                     dgvTransacciones.Columns["Id"].Visible = false;
                     dgvTransacciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -82,25 +89,38 @@ namespace Administrador
             }
         }
 
-        private void btnCategorias_Click(object sender, EventArgs e)
-        {
-            Form principal = this.MdiParent ?? this.Owner;
-            if (principal == null)
-                principal = Application.OpenForms.OfType<P_Principal>().FirstOrDefault();
-
-            if (principal is P_Principal pPrincipal)
-            {
-                pPrincipal.AbrirFormularioEnPanel(new P_Categorias());
-            }
-            else
-            {
-                MessageBox.Show("No se pudo encontrar el formulario principal.");
-            }
-        }
-
         private void P_Transacciones_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvTransacciones.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una transacción para editar.");
+                return;
+            }
+
+            int id = Convert.ToInt32(dgvTransacciones.CurrentRow.Cells["Id"].Value);
+            string tipo = dgvTransacciones.CurrentRow.Cells["Gasto/Ingreso"].Value.ToString();
+
+            if (tipo == "Ingreso")
+            {
+                var frm = new P_RegistrarIngreso();
+                frm.CargarIngresoPorId(id);
+                frm.ShowDialog();
+            }
+            else if (tipo == "Gasto")
+            {
+                var frm = new P_RegistrarGasto();
+                frm.CargarGastoPorId(id);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Tipo de transacción desconocido.");
+            }
         }
     }
 }

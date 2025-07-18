@@ -61,7 +61,16 @@ namespace Administrador
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            UsuarioSesion.Id = 0;
+            UsuarioSesion.Nombre = "";
+            Properties.Settings.Default.UsuarioId = 0;
+            Properties.Settings.Default.RecordarHasta = DateTime.MinValue;
+            Properties.Settings.Default.Save();
+
+            this.Hide();
+            var login = new P_InicarSesion();
+            login.ShowDialog();
+            this.Close();
         }
 
         private void btnTransacciones_Click(object sender, EventArgs e)
